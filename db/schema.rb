@@ -9,13 +9,86 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081028130422) do
+ActiveRecord::Schema.define(:version => 20081028224328) do
+
+  create_table "addresses", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.decimal  "final_price", :precision => 8, :scale => 2, :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "image"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "infos", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "manufacturers", :force => true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_status_histories", :force => true do |t|
+    t.integer  "order_id"
+    t.string   "status"
+    t.integer  "notified"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ordered_products", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.string   "name"
+    t.integer  "quantity"
+    t.decimal  "price",      :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "tax",        :precision => 8, :scale => 2, :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "status"
+    t.decimal  "total",      :precision => 8, :scale => 2, :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "size"
     t.integer  "price",       :limit => 10, :precision => 10, :scale => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "setups", :force => true do |t|
+    t.string   "title"
+    t.string   "key"
+    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
