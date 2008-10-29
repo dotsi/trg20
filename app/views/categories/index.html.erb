@@ -2,35 +2,23 @@
 <p>
 	<% for category in @categories %>
 		<% if category.root? %>
-		<li>
-			<%= link_to h(category.name), category_path(category) %>
+		<li><%= link_to h(category.name), category_path(category) %>
 			<small>[<%= link_to 'Izbriši', category, :confirm => 'Ali ste prepričani?', :method => :delete %>]</small>
 		</li>
 		<% end %>
 	<% end %>
 </p>
 
-<%= collection_select("category", "position", @categories, "id", "position" ) %>
-
-<h2>Uredi vrstni red kategorij geek varianta</h2>
-<p>
-	<% for category in @categories %>
-		<% if category.root? %>
-			
-			<% form_for(category) do |f| %>
-			  <%= f.error_messages %>
-
-			  <p>
-			    <%= category.name %><br />
-			    <%= f.text_field :position %>
-			  </p>
-			 <%= f.submit "Update" %>
-			<% end %>
-			
-		<% end %>
-	<% end %>
-</p>
-
-<%= link_to 'Show', @category %> |
 <%= link_to 'Back', categories_path %>
 <%= link_to 'Nova kategorija', new_category_path %>
+
+<h2>Uredi vrstni red kategorij</h2>
+<% for category in @categories %>
+	<% if category.root? %>
+	<p>	
+		<%= collection_select("category", "position", @categories, "id", "position" ) %>
+		<%=h category.name%>
+	</p>
+	<% end %>
+<% end %>
+
