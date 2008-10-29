@@ -1,0 +1,15 @@
+<p>
+  <b><%=h @category.name %></b>
+</p>
+
+<h2>Podkategorije</h2>
+<p>
+	<% for subcategory in @subcategories %>
+	<%= link_to h(subcategory.name), category_path(subcategory) %>
+	<small>[<%= link_to 'Izbriši', subcategory, :confirm => 'Ali ste prepričani?', :method => :delete %>]</small><br />
+	<% end %>
+</p>
+
+<%= link_to 'Dodaj podkategorijo', new_category_path(:parent_id => @category.id) %> |
+<%= link_to 'Uredi', edit_category_path(@category) %> |
+<%= link_to 'Nazaj', categories_path %>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Lekarnar 2.0</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Small Corporation" />
+	<meta name="keywords" content="small, corporation" />
+	<%= stylesheet_link_tag 'style' %>
+	<%= javascript_include_tag	:all %>
+</head>
+<body>
+	<div id="content">
+		<div id="top">
+			
+		</div>
+	
+		<div id="logo">
+		
+		</div>
+
+		<ul id="menu">
+			<li class="domov"><%= link_to 'Domov', :controller => 'products' %></li>
+			<li class="novice"><%= link_to 'Kategorije', :controller => 'categories' %></li>
+		</ul>
+		
+		<div id="main">
+			<%= yield %>
+		</div>
+		
+		
+		
+		<div id="sidebar">
+		
+			<div class="nav">
+			</div>
+		</div>
+
+		<div id="line"></div>
+		
+		<div id="left">
+		</div>
+					
+		<div id="right">	
+			<div id="rl">
+				
+			</div>
+			
+			<div id="rr">
+	
+			</div>
+		
+			
+		</div>
+			
+		<div id="footer">
+			
+		</div>	
+	</div>
+</body>
+</html>

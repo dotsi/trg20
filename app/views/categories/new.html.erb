@@ -1,0 +1,16 @@
+<h1>Nova kategorija</h1>
+
+<% form_for(@category) do |f| %>
+  <%= f.error_messages %>
+ 
+  <%= f.hidden_field :parent_id %>
+  <p>
+    <%= f.label :ime %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit "Ustvari" %>
+  </p>
+<% end %>
+
+<%= link_to 'Nazaj', categories_path %>
