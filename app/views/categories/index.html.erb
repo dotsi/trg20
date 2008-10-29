@@ -13,12 +13,5 @@
 <%= link_to 'Nova kategorija', new_category_path %>
 
 <h2>Uredi vrstni red kategorij</h2>
-<% for category in @categories %>
-	<% if category.root? %>
-	<p>	
-		<%= collection_select("category", "position", @categories, "id", "position" ) %>
-		<%=h category.name%>
-	</p>
-	<% end %>
-<% end %>
+<%= sortable_categories Category %>
 
