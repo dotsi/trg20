@@ -12,6 +12,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   map.resources :products
   map.resources :categories
+  
+  map.namespace :admin do |admin|
+    admin.resources :categories
+  end
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
 
