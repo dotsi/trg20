@@ -9,8 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD:db/schema.rb
-ActiveRecord::Schema.define(:version => 20081028224328) do
+ActiveRecord::Schema.define(:version => 20081028231223) do
 
   create_table "addresses", :force => true do |t|
     t.datetime "created_at"
@@ -76,20 +75,16 @@ ActiveRecord::Schema.define(:version => 20081028224328) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-=======
-ActiveRecord::Schema.define(:version => 20081028231223) do
->>>>>>> 477a536110874210c3b6e7f3663aea5eab266e57:db/schema.rb
 
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "size"
-    t.decimal  "price"
+    t.integer  "price",       :limit => 10, :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD:db/schema.rb
   create_table "setups", :force => true do |t|
     t.string   "title"
     t.string   "key"
@@ -98,7 +93,6 @@ ActiveRecord::Schema.define(:version => 20081028231223) do
     t.datetime "updated_at"
   end
 
-=======
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
     t.string   "name",                      :limit => 100, :default => ""
@@ -113,5 +107,4 @@ ActiveRecord::Schema.define(:version => 20081028231223) do
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
->>>>>>> 477a536110874210c3b6e7f3663aea5eab266e57:db/schema.rb
 end
