@@ -6,7 +6,7 @@
 <p>
 	<% for subcategory in @subcategories %>
 	<%= link_to h(subcategory.name), admin_category_path(subcategory) %>
-	<small>[<%= link_to 'Izbriši', subcategory, :confirm => 'Ali ste prepričani?', :method => :delete %>]</small><br />
+	<small>[<%= link_to 'Izbriši', [:admin,subcategory], :confirm => 'Ali ste prepričani?', :method => :delete %>]</small><br />
 	<% end %>
 </p>
 
