@@ -1,18 +1,17 @@
-<h1>Kategorije</h1>
+<h1>Administracija kategorij</h1>
 <p>
 	<% for category in @categories %>
 		<% if category.root? %>
 		<li><%= link_to h(category.name), admin_category_path(category) %>
+			<small>[<%= link_to 'Uredi', edit_admin_category_path(category) %>]</small>
 			<small>[<%= link_to 'Izbriši', [:admin, category], :confirm => 'Ali ste prepričani?', :method => :delete %>]</small>
 		</li>
 		<% end %>
 	<% end %>
 </p>
 
-<%= link_to 'Nazaj', admin_categories_path %>
-<%= link_to 'Nova kategorija', new_admin_category_path%>
-
-<h2>Uredi vrstni red kategorij</h2>
+<b><%= link_to 'Nova kategorija', new_admin_category_path%></b>
+<h2>Uredi vrstni red kategorij ( drag & drop )</h2>
 <%= sortable_categories Category %>
 
 

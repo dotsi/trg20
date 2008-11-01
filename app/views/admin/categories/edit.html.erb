@@ -1,2 +1,16 @@
-<h1>Categories#edit</h1>
-<p>Find me in app/views/categories/edit.html.erb</p>
+<h1>Urejanje kategorije</h1>
+
+<% form_for([:admin, @category]) do |f| %>
+
+  <%= f.error_messages %>
+ 
+  <p>
+    <%= f.label :ime %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit "Uredi" %>
+  </p>
+<% end %>
+
+<%= link_to 'Nazaj', admin_categories_path %>
