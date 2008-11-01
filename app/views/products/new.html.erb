@@ -8,6 +8,18 @@
     <%= f.text_field :name %>
   </p>
   <p>
+    <%= f.label :category %><br />
+     <%= hidden_field_tag "product[category_ids][]", "" %>
+<% for category in @categories %>
+<div>
+    <%= check_box_tag "product[category_ids][]", 
+        category.id, @product.categories.include?(category) %>
+    <%= category.name %>
+</div>
+<% end %>
+
+  </p>
+  <p>
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </p>
