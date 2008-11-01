@@ -91,10 +91,6 @@ class Admin::CategoriesController < ApplicationController
     def update_positions
       Category.update_positions(params)
       render :nothing => true
-      #respond_to do |format|
-      #  format.html
-      #  format.xml  { render :xml => @categories }
-      #end
     end
 
   end

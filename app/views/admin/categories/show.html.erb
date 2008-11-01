@@ -1,14 +1,17 @@
-<p>
-  <b><%=h @category.name %></b>
+<p><b>Naziv:</b>
+  <h2><%=h @category.name %></h2>
 </p>
 
-<h2>Podkategorije</h2>
-<p>
-	<% for subcategory in @subcategories %>
-	<%= link_to h(subcategory.name), admin_category_path(subcategory) %>
-	<small>[<%= link_to 'Izbriši', subcategory, :confirm => 'Ali ste prepričani?', :method => :delete %>]</small><br />
-	<% end %>
-</p>
+<% if !@subcategories.empty? %>
+	<h2>Podkategorije</h2>
+	<p>
+		<% for subcategory in @subcategories %>
+		<%= link_to h(subcategory.name), admin_category_path(subcategory) %>
+		<small>[<%= link_to 'Uredi', edit_admin_category_path(subcategory) %>]</small>
+		<small>[<%= link_to 'Izbriši', [:admin,subcategory], :confirm => 'Ali ste prepričani?', :method => :delete %>]</small><br />
+		<% end %>
+	</p>
+<% end %>
 
 <%= link_to 'Dodaj podkategorijo', new_admin_category_path(:parent_id => @category.id) %> |
 <%= link_to 'Uredi', edit_admin_category_path(@category) %> |
