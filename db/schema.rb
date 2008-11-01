@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20081029120940) do
     t.string   "name"
     t.text     "description"
     t.string   "size"
-    t.decimal  "price"
+    t.integer  "price",       :limit => 10, :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
