@@ -1,6 +1,6 @@
 <h1>Nova kategorija</h1>
 
-<% form_for(@category) do |f| %>
+<% form_for([:admin, @category) do |f| %>
   <%= f.error_messages %>
  
   <%= f.hidden_field :parent_id %>
@@ -13,4 +13,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Nazaj', categories_path %>
+<%= link_to 'Nazaj', admin_categories_path %>
