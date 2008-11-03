@@ -15,6 +15,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @subcategories = @category.children
+    @products = @category.products
     
     respond_to do |format|
       format.html # show.html.erb

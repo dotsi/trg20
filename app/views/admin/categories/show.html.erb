@@ -2,7 +2,8 @@
   <h2><%=h @category.name %></h2>
 </p>
 
-<% if !@subcategories.empty? %>
+
+<% unless @subcategories.empty? %>
 	<h2>Podkategorije</h2>
 	<p>
 		<% for subcategory in @subcategories %>

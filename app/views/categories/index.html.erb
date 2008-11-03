@@ -2,17 +2,10 @@
 <p>
 	<% for category in @categories %>
 		<% if category.root? %>
-		<li><%= link_to h(category.name), category_path(category) %>
-			<small>[<%= link_to 'Izbriši', category, :confirm => 'Ali ste prepričani?', :method => :delete %>]</small>
-		</li>
+		<li><%= link_to h(category.name), category_path(category) %></li>
 		<% end %>
 	<% end %>
 </p>
 
 <%= link_to 'Back', categories_path %>
-<%= link_to 'Nova kategorija', new_admin_category_path %>
-
-<h2>Uredi vrstni red kategorij</h2>
-<%= sortable_categories Category %>
-
 
