@@ -1,6 +1,10 @@
 <h1>New product</h1>
 
+<<<<<<< HEAD:app/views/products/new.html.erb
 <% form_for @product, :html => { :multipart => true } do |f| %>
+=======
+<% form_for(@product, :html => { :multipart => true }) do |f| %>
+>>>>>>> ab1267b373406852d3a6dd84af7637dbd8a1d62b:app/views/products/new.html.erb
   <%= f.error_messages %>
 
   <p>
@@ -31,6 +35,10 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </p>
+	<p>
+		<%= f.label :slika %><br />
+		<%= f.file_field :image %>
+	</p>
   <p>
     <%= f.label :size %><br />
     <%= f.text_field :size %>

@@ -1,16 +1,19 @@
-<h1>Log In</h1>
+<h1>Prijava</h1>
 
 <% form_tag session_path do -%>
-<p><%= label_tag 'login' %><br />
+<p><%= label_tag 'Uporabniško ime' %><br />
 <%= text_field_tag 'login', @login %></p>
 
-<p><%= label_tag 'password' %><br/>
+<p><%= label_tag 'Geslo' %><br/>
 <%= password_field_tag 'password', nil %></p>
+
+<p><%= label_tag 'Še niste vpisani?'%>
+	<%= link_to h('Vpis'), new_user_path %>
 
 <!-- Uncomment this if you want this functionality
 <p><%= label_tag 'remember_me', 'Remember me' %>
 <%= check_box_tag 'remember_me', '1', @remember_me %></p>
 -->
 
-<p><%= submit_tag 'Log in' %></p>
+<p><%= submit_tag 'Prijavi se' %></p>
 <% end -%>

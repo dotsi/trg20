@@ -2,14 +2,25 @@
   <b><%=h @category.name %></b>
 </p>
 
-<h2>Podkategorije</h2>
 <p>
 	<% for subcategory in @subcategories %>
 	<%= link_to h(subcategory.name), category_path(subcategory) %>
-	<small>[<%= link_to 'Izbriši', subcategory, :confirm => 'Ali ste prepričani?', :method => :delete %>]</small><br />
 	<% end %>
 </p>
 
-<%= link_to 'Dodaj podkategorijo', new_category_path(:parent_id => @category.id) %> |
-<%= link_to 'Uredi', edit_category_path(@category) %> |
+<% unless @products.empty? %>
+	<h2>Izdelki</h2>
+	<p>
+		<% for product in @products %>
+		<p><%= image_tag product.image.url(:thumb) %></p><br />
+		<p>			
+			<b><%= link_to h(product.name), product %></b><br />
+			<%= product.price %> EUR
+		</p>
+		<% end %>
+	</p>
+<% else %>
+	<h2>V tej kategoriji še ni izdelkov.</h2>
+<% end %>
+	
 <%= link_to 'Nazaj', categories_path %>

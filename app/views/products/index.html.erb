@@ -1,26 +1,27 @@
-<h1>Listing products</h1>
+<h1>Katalog vseh izdelkov</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Size</th>
-    <th>Price</th>
+    <th>Izdelek</th>
+    <th>Cena</th>
+	<th>Admin</th>
   </tr>
 
 <% for product in @products %>
   <tr>
-    <td><%=h product.name %></td>
-    <td><%=h product.description %></td>
-    <td><%=h product.size %></td>
-    <td><%=h product.price %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to h(product.name), product %></td>
+    <td><%=h product.price %> EUR</td>
+	
+	<% if logged_in? %>
+    	<td><%= link_to 'Uredi', edit_product_path(product) %></td>
+    	<td><%= link_to 'Izbriši', product, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New product', new_product_path %>
+<% if logged_in? %>
+	<%= link_to 'Nov izdelek', new_product_path %>
+<% end %>

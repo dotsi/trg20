@@ -4,7 +4,9 @@
 		<% if category.root? %>
 		<li><%= link_to h(category.name), admin_category_path(category) %>
 			<small>[<%= link_to 'Uredi', edit_admin_category_path(category) %>]</small>
-			<small>[<%= link_to 'Izbriši', [:admin, category], :confirm => 'Ali ste prepričani?', :method => :delete %>]</small>
+			<% if category.children.empty? && category.products.empty? %>	
+				<small>[<%= link_to 'Izbriši', [:admin, category], :confirm => 'Ali ste prepričani?', :method => :delete %>]</small>
+			<% end %>
 		</li>
 		<% end %>
 	<% end %>
@@ -13,5 +15,9 @@
 <b><%= link_to 'Nova kategorija', new_admin_category_path%></b>
 <h2>Uredi vrstni red kategorij ( drag & drop )</h2>
 <%= sortable_categories(Category, {:controller => :categories, :action => :update_positions}) %>
+<<<<<<< HEAD:app/views/admin/categories/index.html.erb
+=======
+
+>>>>>>> ab1267b373406852d3a6dd84af7637dbd8a1d62b:app/views/admin/categories/index.html.erb
 
 

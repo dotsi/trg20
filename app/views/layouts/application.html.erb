@@ -20,37 +20,33 @@
 
 		<ul id="menu">
 			<li class="domov"><%= link_to 'Domov', products_path %></li>
-			<li class="novice"><%= link_to 'Kategorije', admin_categories_path %></li>
+			<% if logged_in? %>
+				<li class="novice"><%= link_to 'Admin', admin_categories_path %></li>
+			<% end %>
+			<li><%= link_to 'Prijava', '/login' %>
 		</ul>
 		
 		<div id="main">
 			<%= yield %>
 		</div>
-		
-		
-		
+			
 		<div id="sidebar">
-		
 			<div class="nav">
+			<% if logged_in? -%>
+				<p>Prijavljeni ste kot <b><%= current_user.login %></b></p>
+				<%= link_to 'Odjava', '/logout' -%>
+			<% end %>
+			
+			<h2>Katalog</h2>
+				<%= render :partial => 'shared/menu', :collection => Category.roots %>
+			</div>
+			<div class="cart">
+				<h3>Košarica</h3>
+				<%= image_tag "Shoppingcart_48x48.png" %>
 			</div>
 		</div>
 
 		<div id="line"></div>
-		
-		<div id="left">
-		</div>
-					
-		<div id="right">	
-			<div id="rl">
-				
-			</div>
-			
-			<div id="rr">
-	
-			</div>
-		
-			
-		</div>
 			
 		<div id="footer">
 			
