@@ -12,6 +12,6 @@
 
 <b><%= link_to 'Nova kategorija', new_admin_category_path%></b>
 <h2>Uredi vrstni red kategorij ( drag & drop )</h2>
-<%= sortable_categories Category %>
+<%= sortable_categories(Category, {:controller => :categories, :action => :update_positions}) %>
 
 

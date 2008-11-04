@@ -1,9 +1,9 @@
 class Product < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, :through => :categorizations
-  
   attr_accessor :category_ids
   after_save :update_categories
+
 
   #after_save callback to handle category_ids
   def update_categories

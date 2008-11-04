@@ -1,6 +1,6 @@
 <h1>New product</h1>
 
-<% form_for(@product) do |f| %>
+<% form_for @product, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -16,6 +16,14 @@
         category.id, @product.categories.include?(category) %>
     <%= category.name %>
 </div>
+<% for cat in category.children %>
+<div>
+    &nbsp;&nbsp;<%= check_box_tag "product[category_ids][]", 
+        cat.id, @product.categories.include?(cat) %>
+    <%= cat.name %>
+</div>
+
+<% end %>
 <% end %>
 
   </p>
@@ -31,6 +39,8 @@
     <%= f.label :price %><br />
     <%= f.text_field :price %>
   </p>
+
+
   <p>
     <%= f.submit "Create" %>
   </p>
