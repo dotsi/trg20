@@ -5,6 +5,10 @@ class Product < ActiveRecord::Base
   attr_accessor :category_ids
   after_save :update_categories
 
+  # Support for images
+  has_attached_file :image, :styles => { :thumb => "200x200>" }
+  
+  
   #after_save callback to handle category_ids
   def update_categories
     unless category_ids.nil?

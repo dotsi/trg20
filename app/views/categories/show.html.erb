@@ -12,8 +12,9 @@
 	<h2>Izdelki</h2>
 	<p>
 		<% for product in @products %>
-		<p>
-			<b><%= link_to h(product.name), product %></b>
+		<p><%= image_tag product.image.url(:thumb) %></p><br />
+		<p>			
+			<b><%= link_to h(product.name), product %></b><br />
 			<%= product.price %> EUR
 		</p>
 		<% end %>
