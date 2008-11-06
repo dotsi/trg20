@@ -1,31 +1,18 @@
+<% content_tag("h2", @product.name) %>
+ 
+<%= image_tag @product.image.url(:thumb) %>
+ 
+<%= simple_format h(@product.description) %>
+ 
 <p>
-  <b>Name:</b>
-  <%=h @product.name %>
+  <strong>Price:</strong>
+  <%= @product.price %> EUR
 </p>
 
-<p>
-  <b>Description:</b>
-  <%=h @product.description %>
-</p>
 <p>
   <b>Kategorija:</b>
   <%=h @product.categories.first.name %>
 </p>
-
-<p>
-	<%= image_tag @product.image.url(:thumb) %>
-</p>
-
-<p>
-  <b>Size:</b>
-  <%=h @product.size %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%=h @product.price %>
-</p>
-
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

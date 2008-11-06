@@ -15,6 +15,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.namespace :admin do |admin|
     admin.resources :categories
+    admin.resources :users do |users|
+      users.resources :roles
+    end
   end
   
 

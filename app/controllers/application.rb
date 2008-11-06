@@ -3,6 +3,10 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
+  # You can move this into a different controller, if you wish.  This module gives you the require_role helpers, and others.
+  include RoleRequirementSystem
+
+  # Comment if you would like to add controller in subdirectory (Admin::ControllerName) because of bug
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details

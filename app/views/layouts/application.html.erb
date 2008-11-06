@@ -20,10 +20,11 @@
 
 		<ul id="menu">
 			<li class="domov"><%= link_to 'Domov', products_path %></li>
-			<% if logged_in? %>
-				<li class="novice"><%= link_to 'Admin', admin_categories_path %></li>
+
+			<% unless logged_in? %>
+				<li><%= link_to 'Prijava', '/login' %>
 			<% end %>
-			<li><%= link_to 'Prijava', '/login' %>
+			
 		</ul>
 		
 		<div id="main">
@@ -32,9 +33,12 @@
 			
 		<div id="sidebar">
 			<div class="nav">
-			<% if logged_in? -%>
-				<p>Prijavljeni ste kot <b><%= current_user.login %></b></p>
-				<%= link_to 'Odjava', '/logout' -%>
+			<% if logged_in? && current_user.has_role?('admin') -%>
+				<h2>Administracija</h2>
+				<p>Prijavljeni ste kot uporabnik <b><%= current_user.login %>.</b></p>
+				<li><%= link_to 'Odjava', '/logout' -%></li>
+				<li><%= link_to 'Kategorije', admin_categories_path %></li>
+				<li><%= link_to 'Uporabniki', admin_users_path %></li>
 			<% end %>
 			
 			<h2>Katalog</h2>

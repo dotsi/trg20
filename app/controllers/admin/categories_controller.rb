@@ -1,5 +1,6 @@
 class Admin::CategoriesController < ApplicationController
-  
+    require_role "admin", :for_all_except  => [:index, :show]
+    
     # GET /categories
     # GET /categories.xml
     def index

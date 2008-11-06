@@ -1,0 +1,16 @@
+<p>
+	<b>Ime</b><br />
+	<%= user.login %>	
+</p>
+
+<p>
+	<b>Email</b><br />
+	<%= user.email %>
+</p>
+
+<p>
+	<b>Vloge</b><br />
+	<%= render :partial  => 'role', :collection  => @roles  %><br />
+</p>
+
+<%= link_to ('Uredi vloge'), :controller  => 'admin/roles', :action  => 'index', :user_id  => user.id %>

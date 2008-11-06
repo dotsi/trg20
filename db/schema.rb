@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081104085550) do
+ActiveRecord::Schema.define(:version => 20081104182555) do
 
   create_table "addresses", :force => true do |t|
     t.datetime "created_at"
@@ -100,6 +100,18 @@ ActiveRecord::Schema.define(:version => 20081104085550) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "roles", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
+  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
 
   create_table "setups", :force => true do |t|
     t.string   "title"
