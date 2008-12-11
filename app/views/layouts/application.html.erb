@@ -47,6 +47,12 @@
 			<div class="cart">
 				<h3>Košarica</h3>
 				<%= image_tag "Shoppingcart_48x48.png" %>
+				<% if @cart %> 
+					<div id="shopping_cart"> 
+						<%= render :partial => "cart/cart" %> 
+					</div> 
+				<% end %> 
+				
 			</div>
 		</div>
 

@@ -1,0 +1,5 @@
+<%= link_to item.product.name, :action => "show", :controller => "product", :id => item.product.id %> 
+<%= pluralize(item.quantity, "kos", "kosa") %>, 
+$<%= sprintf("%0.2f", item.price * item.quantity) %> 
+
+(<%= remove_product_link("Odstrani", item.product) %>) 

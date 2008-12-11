@@ -14,5 +14,13 @@
   <%=h @product.categories.first.name %>
 </p>
 
+<p>
+	<strong> 
+    	<%= link_to "Dodaj v košarico >>",  :controller => "cart", :action => "add", :id => @product %> <br />
+		<%= add_product_link("Dodaj v košarico Ajax >>", @product) %> 
+    </strong>
+</p>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+

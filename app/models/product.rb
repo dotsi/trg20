@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   has_many :categories, :through => :categorizations
   
   has_many :cart_items
-  has_many :carts, :trought  => :cart_items
+  has_many :carts, :through  => :cart_items
   
   attr_accessor :category_ids
   after_save :update_categories

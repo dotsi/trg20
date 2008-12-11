@@ -17,4 +17,15 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+  private 
+
+   def initialize_cart 
+     if session[:cart_id] 
+       @cart = Cart.find(session[:cart_id]) 
+     else 
+       @cart = Cart.create 
+       session[:cart_id] = @cart.id 
+     end 
+   end 
+  
 end
