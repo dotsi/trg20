@@ -1,0 +1,19 @@
+<h1>Listing manufacturers</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for manufacturer in @manufacturers %>
+  <tr>
+  <td><%=manufacturer.name%></td>
+    <td><%= link_to 'Show', manufacturer %></td>
+    <td><%= link_to 'Edit', edit_manufacturer_path(manufacturer) %></td>
+    <td><%= link_to 'Destroy', manufacturer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New manufacturer', new_manufacturer_path %>

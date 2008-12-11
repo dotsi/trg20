@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :manufacturers
+
   
   map.root  :controller => 'products'
   

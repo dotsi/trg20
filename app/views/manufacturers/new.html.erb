@@ -1,0 +1,22 @@
+<h1>New manufacturer</h1>
+
+<% form_for @manufacturer, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+ <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+	<p>
+		<%= f.label :slika %><br />
+		<%= f.file_field :image %>
+	</p>
+  <p>
+    <%= f.label :URL %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', manufacturers_path %>

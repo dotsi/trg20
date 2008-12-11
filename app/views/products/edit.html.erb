@@ -8,6 +8,9 @@
     <%= f.text_field :name %>
   </p>
     <p>
+    <%= f.label :manufacturer %><br />
+  <%= f.collection_select( "manufacturer_id" , Manufacturer.find(:all), "id", "name") %>
+    <p>
     <%= f.label :category %><br />
      <%= hidden_field_tag "product[category_ids][]", "" %>
 <% for category in @categories %>
@@ -15,15 +18,12 @@
     <%= check_box_tag "product[category_ids][]", 
         category.id, @product.categories.include?(category) %>
     <%= category.name %>
-</div>
 <% for cat in category.children %>
-<div>
     &nbsp;&nbsp;<%= check_box_tag "product[category_ids][]", 
         cat.id, @product.categories.include?(cat) %>
     <%= cat.name %>
-</div>
-
 <% end %>
+</div>
 <% end %>
 
   </p>
@@ -35,6 +35,11 @@
 	<p>
 		<%= f.label :slika %><br />
 		<%= f.file_field :image %>
+	</p>
+	
+    <p>
+		<%= f.label :pdf %><br />
+		<%= f.file_field :pdf %>
 	</p>
 	
   <p>

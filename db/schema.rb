@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081104085550) do
+ActiveRecord::Schema.define(:version => 20081104194718) do
 
   create_table "addresses", :force => true do |t|
     t.datetime "created_at"
@@ -55,10 +55,12 @@ ActiveRecord::Schema.define(:version => 20081104085550) do
 
   create_table "manufacturers", :force => true do |t|
     t.string   "name"
-    t.string   "image"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
   end
 
   create_table "order_status_histories", :force => true do |t|
@@ -92,13 +94,17 @@ ActiveRecord::Schema.define(:version => 20081104085550) do
     t.string   "name"
     t.text     "description"
     t.string   "size"
-    t.decimal  "price"
+    t.integer  "price",              :limit => 10, :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "manufacturer_id"
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.integer  "pdf_file_size"
   end
 
   create_table "setups", :force => true do |t|

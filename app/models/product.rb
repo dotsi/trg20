@@ -1,17 +1,14 @@
 class Product < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, :through => :categorizations
+  belongs_to :manufacturer
   attr_accessor :category_ids
   after_save :update_categories
 
-<<<<<<< HEAD:app/models/product.rb
-
-=======
   # Support for images
-  has_attached_file :image, :styles => { :thumb => "200x200>" }
-  
-  
->>>>>>> ab1267b373406852d3a6dd84af7637dbd8a1d62b:app/models/product.rb
+  has_attached_file :image, :path => ":rails_root/public/images/:class/:attachment_:id_:style_:basename.:extension", :styles => { :thumb => "200x200>" }
+  has_attached_file :pdf, :path => ":rails_root/public/pdf/:class_:attachment_:id_:style_:basename.:extension", :styles => { :thumbnail => ["200x200!", :jpg] } 
+
   #after_save callback to handle category_ids
   def update_categories
     unless category_ids.nil?
