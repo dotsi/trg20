@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_filter :initialize_cart
+  
   # GET /categories
   # GET /categories.xml
   def index
