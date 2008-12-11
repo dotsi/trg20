@@ -5,13 +5,15 @@
   <%=h @product.manufacturer.name %>
 <% end %>
 
+<% content_tag("h2", @product.name) %>
+ 
+<%= image_tag @product.image.url(:thumb) %>
+ 
+<%= simple_format h(@product.description) %>
+ 
 <p>
-  <b>Name:</b>
-  <%=h @product.name %>
-</p>
-<p>
-  <b>Description:</b>
-  <%=h @product.description %>
+  <strong>Price:</strong>
+  <%= @product.price %> EUR
 </p>
 <p>
   <b>Kategorija:</b>
@@ -19,19 +21,12 @@
 </p>
 
 <p>
-	<%= image_tag @product.image.url(:thumb) %>
+	<strong> 
+    	<%= link_to "Dodaj v košarico >>",  :controller => "cart", :action => "add", :id => @product %> <br />
+		<%= add_product_link("Dodaj v košarico Ajax >>", @product) %> 
+    </strong>
 </p>
-
-<p>
-  <b>Size:</b>
-  <%=h @product.size %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%=h number_to_currency(@product.price) %>
-</p>
-
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+

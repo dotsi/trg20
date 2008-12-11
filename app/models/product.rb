@@ -2,6 +2,10 @@ class Product < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, :through => :categorizations
   belongs_to :manufacturer
+  
+  has_many :cart_items
+  has_many :carts, :through  => :cart_items
+  
   attr_accessor :category_ids
   after_save :update_categories
 

@@ -3,6 +3,10 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
+  # You can move this into a different controller, if you wish.  This module gives you the require_role helpers, and others.
+  include RoleRequirementSystem
+
+  # Comment if you would like to add controller in subdirectory (Admin::ControllerName) because of bug
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
@@ -13,4 +17,15 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+  private 
+
+   def initialize_cart 
+     if session[:cart_id] 
+       @cart = Cart.find(session[:cart_id]) 
+     else 
+       @cart = Cart.create 
+       session[:cart_id] = @cart.id 
+     end 
+   end 
+  
 end

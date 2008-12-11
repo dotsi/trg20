@@ -15,7 +15,8 @@
 		<p><%= image_tag product.image.url(:thumb) %></p><br />
 		<p>			
 			<b><%= link_to h(product.name), product %></b><br />
-			<%= product.price %> EUR
+			<b>Količina:</b><%= product.size %><br />
+			<b>Cena:</b><%= product.price %> EUR
 		</p>
 		<% end %>
 	</p>

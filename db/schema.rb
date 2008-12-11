@@ -9,18 +9,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081104194718) do
 
   create_table "addresses", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "carts", :force => true do |t|
-    t.integer  "user_id"
+  create_table "cart_items", :force => true do |t|
+    t.integer  "cart_id"
     t.integer  "product_id"
     t.integer  "quantity"
-    t.decimal  "final_price", :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", :force => true do |t|
+    t.integer  "user_id"
+    t.decimal  "final_price", :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -106,6 +112,18 @@ ActiveRecord::Schema.define(:version => 20081104194718) do
     t.string   "pdf_content_type"
     t.integer  "pdf_file_size"
   end
+
+  create_table "roles", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
+  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
 
   create_table "setups", :force => true do |t|
     t.string   "title"

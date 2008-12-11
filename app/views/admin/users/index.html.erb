@@ -1,0 +1,8 @@
+<h1>Uporabniki</h1>
+
+<% for user in @users %>
+	<ul>
+		<li><%= link_to (user.login), [:admin, user] %></li>
+	</ul>
+<% end %>
+
